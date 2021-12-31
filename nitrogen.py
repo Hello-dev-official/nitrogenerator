@@ -1,14 +1,32 @@
-import matplotlib.pyplot as plt
 import requests
 import random
-import itertools
 import threading
 import string
+import numpy as np
+import matplotlib.pyplot as plt
 import time
 import sys
-import numpy as np
-import pyfiglet
+import itertools
+import pyfiglet as pf
 
+done = False
+
+
+def animate():
+    for c in itertools.cycle(['|', '/', '-', '\\']):
+        if done:
+            break
+        sys.stdout.write('\rLoading Simulation ' + c)
+        sys.stdout.flush()
+        time.sleep(0.1)
+
+
+t = threading.Thread(target=animate)
+t.start()
+
+# long process here
+time.sleep(5)
+done = True
 class colors:
     red = '\033[31m'
     green = '\033[32m'
@@ -16,27 +34,9 @@ class colors:
     lightcyan = '\033[96m'
 
 def credits():
-    credits = pyfiglet.figlet_format("H  e  l  l  o")
-    print(f'{colors.red}Made by' + credits)
+    credit = pf.figlet_format("H  e  l  l  o")
+    print(f'{colors.red}\nMade by' + credit)
 credits()
-
-animation_finished = False
-
-def animation():
-    for x in itertools.cycle(['|', '/', '-', '\\']):
-        if animation_finished:
-            break
-        sys.stdout.write('\rLoading NitroGen ' + x)
-        sys.stdout.flush()
-        time.sleep(0.1)
-
-
-t = threading.Thread(target=animation)
-t.start()
-time.sleep(5)
-animation_finished = True
-
-
 codes_needed = input(f'\n{colors.lightcyan}Do you want to see the chance of getting a nitro code[Y/N]')
 if codes_needed == 'Y':
     x = 100000,200000,300000,400000
@@ -46,16 +46,22 @@ if codes_needed == 'Y':
     plt.ylabel('Nitrocodes you will get')
     plt.show()
 
+gens = int(input('Input How Many Codes to Generate and Check: '))
 
-gens = int(input(np.array((f'{colors.pink}\nInput How Many Codes to Generate and Check: '))))
-print('---------------------------------------------------------------------------------------')
+with open("Nitro Codes.txt", "w", encoding='utf-8') as file:
+    print(f"{colors.green}NitroCodes are being generated")
 
-with open("NitroCodes.txt", "w", encoding='utf-8') as file:
-    print(np.array('Nitrocodes are being generated'))
-    time.sleep(2)
+
+
     for i in range(gens):
-        code = np.array("".join(random.choices(
-            string.ascii_uppercase + string.digits + string.ascii_lowercase, k=16)))
+        code = "".join(random.choices(
+            string.ascii_uppercase + string.digits + string.ascii_lowercase,k = 16))
+
+
+
+        file.write(f"https://discord.gift/{code}\n")
+
+
 
 with open("Nitro Codes.txt") as file:
     for line in file.readlines():
@@ -66,12 +72,9 @@ with open("Nitro Codes.txt") as file:
         request = requests.get(url)
 
         if request.status_code == 200:
-            print(np.array(f"{colors.green} NITRO-CODE-FOUND : \n{nitro} "))
+            print(np.array(f" {colors.green}\nValid | {nitro} "))
             break
         else:
-            print(np.array(f"{colors.red} Not-Working : \n{nitro} "))
-
-
-
+            print(np.array(f" {colors.red}\nNot-Working | {nitro} "))
 
 
