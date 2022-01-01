@@ -8,8 +8,11 @@ import time
 import sys
 import itertools
 import pyfiglet as pf
+from time import sleep
 
 done = False
+
+
 
 
 def animate():
@@ -46,7 +49,7 @@ if codes_needed == 'Y':
     plt.ylabel('Nitrocodes you will get')
     plt.show()
 
-gens = int(input('Input How Many Codes to Generate and Check: '))
+gens = int(input('How many nitro-codes do you want to generate? '))
 
 with open("Nitro Codes.txt", "w", encoding='utf-8') as file:
     print(f"{colors.green}NitroCodes are being generated")
