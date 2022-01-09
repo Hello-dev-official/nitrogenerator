@@ -12,3 +12,5 @@
 [-] The code does not work for WINDOWS CMD yet, so do it on an IDE like pycharm or vscode
 
 [-] Its not gonna work because I only made it for educational purposes, you can change the code and use it, to make it work
+
+I will be making this tool much more faster!!. Right now im pretty sure its the fastest nitrogenerator in the world
