@@ -10,3 +10,5 @@
 [-] If you think that I'm lying then why are you still here lol. Instead go ahead and try the tool out yourself, il be making major improvements soon.
 
 [-] The code does not work for WINDOWS CMD yet, so do it on an IDE like pycharm or vscode
+
+[-] Its not gonna work because I only made it for educational purposes, you can change the code and use it, to make it work
